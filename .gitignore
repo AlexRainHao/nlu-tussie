@@ -1,0 +1,6 @@
+.idea
+*.idea
+*.py[cio]
+__pycache__
+.DS_Store
+.vscode
