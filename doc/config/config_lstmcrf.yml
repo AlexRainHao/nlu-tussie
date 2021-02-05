@@ -1,0 +1,19 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_lac"
+- name: "ner_bilstm_crf"
+  embedding: "embedding"
+  normalizers: {"digit_zero_flat": True}
+  lower_case: True
+  use_seg: True
+  token_dim: 100
+  seg_dim: 20
+  hidden_dim: 256
+  crf_only: False
+  learning_rate: 1e-3
+  weight_decay: 0.0
+  epochs: 10
+  batch_size: 32
+  dropout: 0.8
+  folds: 0.8

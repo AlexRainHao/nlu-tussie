@@ -1,0 +1,19 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_lac"
+- name: "cout_vectors_featurizer"
+  normalizer: {"digit_trun": True}
+  tokenizer: jieba.lcut
+- name: "ner_synonyms"
+- name: "ner_crf"
+  # confidence threshold
+  "confidence_threshold": 0.7
+  # training epoch
+  "max_iterations": 50
+  # weight of theL1 regularization
+  "L1_c": 0.1
+  # weight of the L2 regularization
+  "L2_c": 0.1
+  # train/dev split ratio
+  "folds": 0.8

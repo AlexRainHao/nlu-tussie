@@ -1,0 +1,19 @@
+language: "zh"
+
+pipeline:
+- name: "tokenizer_lac"
+- name: "ner_bilstm_crf"
+  embedding: "bert"
+  normalizers: {"digit_zero_flat": False}
+  lower_case: True
+  hidden_dim: 256
+  crf_only: False
+  bert_path: "/home/user/yuanyh/Bert/chinese_L-12_H-768_A-12"
+  init_checkpoint: "bert_model.ckpt"
+  learning_rate: 1e-5
+  max_seq_len: 256
+  weight_decay: 0.0
+  epochs: 5
+  batch_size: 8
+  dropout: 0.8
+  folds: 0.8

@@ -1,0 +1,30 @@
+language: "zh"
+
+pipeline:
+- name: "nlp_spacy"
+  model: "/home/user/yuanyh/ner_dev/model/CoreModel"
+- name: "tokenizer_spacy"
+- name: "bert_vectors_featurizer"
+  ip: 192.168.100.210
+  port: 5555
+  port_out: 5556
+  http_port: 5557
+  timeout: 10000
+- name: "spacy_entity_extractor"
+  # mapping spacy model entities to certain tag
+  interest_entities: {"PER": ["PERSON", "PER"],
+                      "RESIDENT": ["FAC", "GPE", "LOC"],
+                      "ORG": ["ORG"],
+                      "Money": ["MONEY"],
+                      "Date": ["DATE", "TIME"],
+                      "TITLE": ["TITLE"],
+                      "EDU": ["EDU"]}
+  # pos-processing for entities if necessary
+  patterns: {"RESIDENT": [["[门幢楼栋室巷屯乡镇元层区庄址村]$", "conj"]],
+             "PER": [["[\\da-zA-Z]", "clear"]],
+             "Money": [["[^0-9点\\.,，多几十百千万亿余一二两三四五六七八九零]+元$", "clear"]],
+             "Date": [["[0-9一二三四五六七八九十零]+岁", "clear"],
+                      ["百分", "clear"],
+                      ["[万亿例]$", "clear"]]}
+  # confidence_threshold
+  confidence_threshold: 0.7
