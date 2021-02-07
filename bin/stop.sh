@@ -1,7 +1,7 @@
 
 SHHOME=$(cd `dirname $0`; pwd)
 BASEHOME=$(cd $SHHOME/..; pwd)
-COMPOSEFILE=$BASEHOME/.ner-compose.yml
+COMPOSEFILE=$BASEHOME/.nlu-compose.yml
 CONFIGFILE=$BASEHOME/conf/server_conf.ini
 
 cd $BASEHOME

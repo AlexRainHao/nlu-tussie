@@ -1,6 +1,6 @@
 SHHOME=$(cd `dirname $0`; pwd)
 BASEHOME=$(cd $SHHOME/..; pwd)
-COMPOSEFILE=$BASEHOME/.ner-compose.yml
+COMPOSEFILE=$BASEHOME/.nlu-compose.yml
 
 
 cd $BASEHOME
@@ -35,7 +35,7 @@ function Arr_Compose(){
 function Start_Image(){
 	chmod +x $SHHOME/docker-compose
 	cd $BASEHOME
-	$SHHOME/docker-compose -f $BASEHOME/.ner-compose.yml up -d
+	$SHHOME/docker-compose -f $BASEHOME/.nlu-compose.yml up -d
 }
 
 

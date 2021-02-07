@@ -1,4 +1,4 @@
-BIN_PATH=/home/admin/NER_Server
+BIN_PATH=/home/admin/NLU_Server
 BERT_MODEL_PATH=$BIN_PATH/model/BertModel
 ALBERT_MODEL_PATH=$BIN_PATH/model/AlbertModel
 NER_MODEL_PATH=$BIN_PATH/model/NerModel
@@ -92,13 +92,13 @@ function Start_Bert(){
         cd $BIN_PATH
 }
 
-# 2. NER server
-function Start_Ner(){
+# 2. NLU server
+function Start_NLU(){
   cd $SRC_PATH
-  Logger "Start NER Server..."
+  Logger "Start NLU Server..."
 
   # 2.1 start server
-  nohup python3 -m ner_tussie.server \
+  nohup python3 -m nlu_tussie.server \
   -P 9001 \
   --path $NER_MODEL_PATH \
   --pre_load default \
@@ -109,17 +109,17 @@ function Start_Ner(){
   _start_time=$(date +%s)
   until `curl -X POST http://0.0.0.0:9001/parse \
   -d '{"q":"今天天气怎么样"}' > /dev/null 2>&1`; do
-    Logger "Checking NER Status..."
+    Logger "Checking NLU Status..."
     sleep 3s
     _end_time=$(date +%s)
     if [[ $((_end_time-_start_time)) -gt 120 ]];then
-      for pid in ` ps -ef | grep ner_tussie.server | grep -v grep | awk '{print $2}'`;do
+      for pid in ` ps -ef | grep nlu_tussie.server | grep -v grep | awk '{print $2}'`;do
         kill -9 $pid
       done
-      error_exit "Start NER Server Failed!! "
+      error_exit "Start NLU Server Failed!! "
     fi
   done
-  Logger "Start NER Server Successfully"
+  Logger "Start NLU Server Successfully"
   cd $BIN_PATH
 }
 
@@ -130,4 +130,4 @@ function HangUp_Server(){
         done
 }
 
-(Init_Logger; Start_Albert; Start_Ner; HangUp_Server)
+(Init_Logger; Start_Albert; Start_NLU; HangUp_Server)

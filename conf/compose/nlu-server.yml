@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+  nlu-server:
+    image: nlu-server
+    container_name: nlu-server
+    network_mode: ${network_mode}
+    ports:
+      - "${server_port}:9001"
+    volumes:
+      - ${host_logs_dir}:/home/admin/NLU_Server/logs/
+      - ${host_model_dir}:/home/admin/NLU_Server/model/
+      - ${host_conf_dir}:/home/admin/NLU_Server/conf/
+      - ${host_bin_dir}:/home/admin/NLU_Server/bin/
+      - ${host_libs_dir}:/home/admin/NLU_Server/libs/
+    expose:
+      - "${server_port}"
+    environment:
+      - PYTHONIOENCODING=UTF-8
