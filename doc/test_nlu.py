@@ -2,7 +2,7 @@ import os
 import os.path as opt
 import sys
 
-from ner_tussie.model import Interpreter
+from nlu_tussie.model import Interpreter
 import json
 
 os.chdir(os.path.dirname(__file__))
