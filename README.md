@@ -32,8 +32,9 @@ Release
 ### 1.2 项目参考
 
 项目参考 `rasa-nlu==0.12.3` 沿用和修改
+
 [Rasa](https://rasa.com/)
----
+
 <br>
 
 ## 2.模型训练
@@ -91,7 +92,6 @@ cd doc
 * config_lstmcrf --> 基于 bilstm-crf的NER
 * config_crfpp --> 基于统计规则的线性链crf的NER
 * config_spacy --> 使用 *spacy* 预训练模型的NER
-* config_normal --> 远古版本通用型NER的配置文件，提供18种实体输出（可能不适配现版本，供相关配置参考）
 
 #### 2.2.2 训练脚本
 
@@ -103,11 +103,7 @@ cd doc
 config = './config/config_bertcrf.yml'
 ```
 
-然后进入虚拟环境，建议使用210的环境，或者在 `build_deped/requirements.txt` 进行安装
-
 ```python
-source /home/user/yuanyh/vitualEnv/nerenv/bin/activate
-
 python3 train_nlu.py
 ```
 
@@ -151,7 +147,7 @@ python3 test_nlu.py
 
 ```yml
 - name: "nlp_spacy"
-  model: "/home/user/yuanyh/ner_dev/model/CoreModel"
+  model: "/home/admin/CoreModel"
 - name: "tokenizer_spacy"
 ```
 
@@ -202,7 +198,7 @@ lac的模型预测对应pipe为 `lac_entity_extractor`
 
 ```python
 "crf_only": False,
-"bert_path": "/home/user/yuanyh/Bert/chinese_L-12_H-768_A-12",
+"bert_path": "/home/admin/Bert/chinese_L-12_H-768_A-12",
 "init_checkpoint": "bert_model.ckpt",
 "embedding": "bert"
 ```
@@ -234,8 +230,8 @@ lac的模型预测对应pipe为 `lac_entity_extractor`
 重要参数包括
 
 ```python
-"cache_dir": "/home/user/yuanyh/Flat_Lattice_NER/cache",
-"model_dir": "/home/user/yuanyh/Flat_Lattice_NER/out"
+"cache_dir": "/home/admin/Flat_Lattice_NER/cache",
+"model_dir": "/home/admin/Flat_Lattice_NER/out"
 ```
 
 ### 2.3.5 bert feature

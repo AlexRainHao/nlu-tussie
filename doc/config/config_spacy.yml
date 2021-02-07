@@ -2,10 +2,10 @@ language: "zh"
 
 pipeline:
 - name: "nlp_spacy"
-  model: "/home/user/yuanyh/ner_dev/model/CoreModel"
+  model: "/home/admin/CoreModel"
 - name: "tokenizer_spacy"
 - name: "bert_vectors_featurizer"
-  ip: 192.168.100.210
+  ip: 127.0.0.1
   port: 5555
   port_out: 5556
   http_port: 5557

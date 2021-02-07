@@ -1,5 +1,4 @@
 BIN_PATH=/home/admin/NER_Server
-#BIN_PATH=/home/user/yuanyh/nerYJCloud
 BERT_MODEL_PATH=$BIN_PATH/model/BertModel
 ALBERT_MODEL_PATH=$BIN_PATH/model/AlbertModel
 NER_MODEL_PATH=$BIN_PATH/model/NerModel
@@ -99,7 +98,7 @@ function Start_Ner(){
   Logger "Start NER Server..."
 
   # 2.1 start server
-  nohup python3 -m ner_yjcloud.server \
+  nohup python3 -m ner_tussie.server \
   -P 9001 \
   --path $NER_MODEL_PATH \
   --pre_load default \
@@ -114,7 +113,7 @@ function Start_Ner(){
     sleep 3s
     _end_time=$(date +%s)
     if [[ $((_end_time-_start_time)) -gt 120 ]];then
-      for pid in ` ps -ef | grep ner_yjcloud.server | grep -v grep | awk '{print $2}'`;do
+      for pid in ` ps -ef | grep ner_tussie.server | grep -v grep | awk '{print $2}'`;do
         kill -9 $pid
       done
       error_exit "Start NER Server Failed!! "
@@ -131,6 +130,4 @@ function HangUp_Server(){
         done
 }
 
-#(Init_Logger; Start_Bert; Start_Ner; HangUp_Server)
 (Init_Logger; Start_Albert; Start_Ner; HangUp_Server)
-#(Init_Logger; Start_Albert; Start_Ner)

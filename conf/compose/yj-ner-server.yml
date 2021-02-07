@@ -1,8 +1,8 @@
 version: '3.0'
 services:
-  yj-ner-server:
-    image: yj-ner-server
-    container_name: yj-ner-server
+  ner-server:
+    image: ner-server
+    container_name: ner-server
     network_mode: ${network_mode}
     ports:
       - "${server_port}:9001"

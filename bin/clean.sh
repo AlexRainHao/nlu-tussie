@@ -1,5 +1,5 @@
 # server
-server_id=`docker images | grep yj-ner-server | awk '{print $3}'`
+server_id=`docker images | grep ner-server | awk '{print $3}'`
 
 
 for id in $modelploy_id $server_id;do

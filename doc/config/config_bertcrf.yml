@@ -8,7 +8,7 @@ pipeline:
   lower_case: True
   hidden_dim: 256
   crf_only: False
-  bert_path: "/home/user/yuanyh/Bert/chinese_L-12_H-768_A-12"
+  bert_path: "/home/admin/Bert/chinese_L-12_H-768_A-12"
   init_checkpoint: "bert_model.ckpt"
   learning_rate: 1e-5
   max_seq_len: 256
