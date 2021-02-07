@@ -32,7 +32,7 @@ Release
 ### 1.2 项目参考
 
 项目参考 `rasa-nlu==0.12.3` 沿用和修改
-
+[Rasa](https://rasa.com/)
 ---
 <br>
 
@@ -268,15 +268,11 @@ lac的模型预测对应pipe为 `lac_entity_extractor`
 
 ## 4.试用服务
 
-提供了远古版本通用型NER调用接口
-
-```bash
-curl -XPOST http://192.168.100.210:9999/parse -d '{"q":"今天天气如何"}'
-```
+(待补充)
 
 ## 5.未来改进及计划
 (待补充)
 
 ## 6.Bug反馈及改进提交
 
-yuanyh<yuanyh@yunjiacloud.com>
+AlexRainHao<yuanyuhaoyyh@gmail.com>
